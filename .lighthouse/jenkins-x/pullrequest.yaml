@@ -47,6 +47,9 @@ spec:
             source /workspace/source/.jx/variables.sh
             cd preview
             helmfile repos
+          env:
+          - name: PREVIEW_NAMESPACE
+            value: foo
         - image: gcr.io/jenkinsxio/jx-cli:3.0.705
           name: promote-jx-preview
           resources: {}
