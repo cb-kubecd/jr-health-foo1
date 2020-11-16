@@ -2,6 +2,9 @@ environments:
   default:
     values:
     - jx-values.yaml
+repositories:
+- name: jx3
+  url: https://storage.googleapis.com/jenkinsxio/charts
 releases:
 - chart: jx3/acme
   version: 0.0.13
