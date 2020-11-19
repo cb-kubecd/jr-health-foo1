@@ -10,6 +10,7 @@ releases:
   name: tls
   namespace: '{{ requiredEnv "PREVIEW_NAMESPACE" }}'
   values:
+  - jx-values.yaml
   - issuer:
       cluster: true
 - chart: '../charts/{{ requiredEnv "APP_NAME" }}'
