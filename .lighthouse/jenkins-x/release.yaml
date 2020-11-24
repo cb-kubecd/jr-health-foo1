@@ -30,12 +30,13 @@ spec:
           resources: {}
           script: |
             #!/usr/bin/env bash
-            echo $(jx-release-version) > VERSION
-            sed -i -e "s/version:.*/version: $(cat VERSION)/" Chart.yaml
-            sed -i -e "s/tag:.*/tag: $(cat VERSION)/" values.yaml
-            git commit -a -m "release $(cat VERSION)" --allow-empty
-            git tag -fa v$(cat VERSION) -m "Release version $(cat VERSION)"
-            git push origin v$(cat VERSION)
+            VERSION=$(jx-release-version)
+            echo $VERSION > VERSION
+            sed -i -e "s/version:.*/version: $VERSION/" ./charts/$REPO_NAME/Chart.yaml
+            sed -i -e "s/tag:.*/tag: $VERSION/" ./charts/$REPO_NAME/values.yaml
+            git commit -a -m "release $VERSION" --allow-empty
+            git tag -fa v$VERSION -m "Release version $VERSION"
+            git push origin v$VERSION
         - image: gcr.io/jenkinsxio/jx-cli:3.0.705
           name: jx-variables
           resources: {}
