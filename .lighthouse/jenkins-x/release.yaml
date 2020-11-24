@@ -31,9 +31,9 @@ spec:
           script: |
             #!/usr/bin/env bash
             echo $(jx-release-version) > VERSION
-            git commit -a -m "release $(VERSION)" --allow-empty
-            git tag -fa v$(VERSION) -m "Release version $(VERSION)"
-            git push origin v$(VERSION)
+            git commit -a -m "release $(cat VERSION)" --allow-empty
+            git tag -fa v$(cat VERSION) -m "Release version $(VERSION)"
+            git push origin v$(cat VERSION)
         - image: gcr.io/jenkinsxio/jx-cli:3.0.705
           name: jx-variables
           resources: {}
